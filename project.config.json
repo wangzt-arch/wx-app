@@ -4,7 +4,7 @@
   "description": "微信小程序",
   "appid": "wxeac81e41c0db1cae",
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": false,
     "enhance": true,
     "postcss": false,

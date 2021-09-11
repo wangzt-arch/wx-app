@@ -1,4 +1,4 @@
-import $ from "axios";
+import $ from "taro-axios";
 /**
  * 获取天气信息
  * @param {number} cityCode
