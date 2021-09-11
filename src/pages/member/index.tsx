@@ -18,7 +18,7 @@ export default class Index extends Component<Props, State>{
       isWeatherShow: false,
     }
   }
-  async componentDidMount() {
+  async componentDidShow() {
     try {
       let res = await getWeather(110000)
       this.setState({ weather: res.data.lives[0] })
