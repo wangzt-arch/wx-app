@@ -3,6 +3,11 @@ export default {
     'pages/home/index',
     'pages/member/index'
   ],
+  subPackages: [
+    {
+      root: 'subpackages/login',
+      pages: ['index']
+    }],
   permission: {
     'scope.userLocation': {
       desc: '你的位置信息将用获取天气信息'
