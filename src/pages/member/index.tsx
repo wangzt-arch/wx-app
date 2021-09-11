@@ -25,7 +25,7 @@ export default class Index extends Component {
           </View>
           <View className='member__user'>
             <View className='member__name'>我就是太阳</View>
-            <View className='member__power'><AtRate value={4}></AtRate></View>
+            <AtRate className='member__power' value={4}></AtRate>
           </View>
         </View>
       </View>
