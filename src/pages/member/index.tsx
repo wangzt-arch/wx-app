@@ -4,6 +4,7 @@ import { AtFloatLayout, AtRate } from 'taro-ui'
 import Weather from '../../components/Weather'
 import getWeather from '../../../src/api'
 import avatatImg from '../../resource/image/lixin.jpeg'
+import vipImg from '../../resource/image/vip.png'
 import './index.scss'
 
 interface Props { }
@@ -41,8 +42,8 @@ export default class Index extends Component<Props, State>{
             <Image className='member__image' src={avatatImg}></Image>
           </View>
           <View className='member__user'>
-            <View className='member__name'>我就是太阳</View>
-            <AtRate className='member__power' value={4}></AtRate>
+            <View className='member__name'>user太阳</View>
+            <Image className='member__power' src={vipImg}></Image>
           </View>
           <View className='member__weather-btn' onClick={this.onGetWeather}>获取天气</View>
         </View>
