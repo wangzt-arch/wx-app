@@ -1,3 +1,4 @@
+import 'taro-ui/dist/style/index.scss'
 import { Component } from 'react'
 import './app.scss'
 
