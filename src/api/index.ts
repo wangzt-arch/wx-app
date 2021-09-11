@@ -4,7 +4,7 @@ import $ from "taro-axios";
  * @param {number} cityCode
  * @returns
  */
-export default function getWeather(cityCode) {
+export default function getWeather(cityCode='河北省') {
     const key = "9c49ff55128adf0fc7480c2978dbcbce",
         city = cityCode;
     return $.get(

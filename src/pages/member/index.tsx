@@ -21,7 +21,9 @@ export default class Index extends Component<Props, State>{
   }
   async componentDidShow() {
     try {
-      let res = await getWeather(110000)
+      // let res = await getWeather(110000)
+      let res = await getWeather('北京市')
+
       this.setState({ weather: res.data.lives[0] })
     } catch (error) {
       console.log(error);
