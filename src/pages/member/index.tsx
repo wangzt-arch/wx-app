@@ -1,29 +1,38 @@
 import { Component } from 'react'
 import { View, Image } from '@tarojs/components'
-import { AtRate, AtCalendar } from 'taro-ui'
+import { AtRate } from 'taro-ui'
+import Weather from '../../components/Weather'
 import getWeather from '../../../src/api'
 import avatatImg from '../../resource/image/lixin.jpeg'
 import './index.scss'
 
 interface Props { }
 interface State {
-  isWeatherShow: boolean
+  isWeatherShow: boolean,
+  weather?: {}
 }
 export default class Index extends Component<Props, State>{
   constructor(props) {
     super(props)
     this.state = {
-      // eslint-disable-next-line react/no-unused-state
-      isWeatherShow: true
+      isWeatherShow: false,
     }
   }
-  // componentDidMount(){
-  //   getWeather(110000)
-  // }
-  onGetWeather = () => {
-    getWeather(110000)
+  async componentDidMount() {
+    try {
+      let res = await getWeather(110000)
+      console.log(res);
+      this.setState({ weather: res.data.lives[0] })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  onGetWeather = async () => {
+    const { isWeatherShow } = this.state
+    this.setState({ isWeatherShow: !isWeatherShow })
   }
   render() {
+    const { isWeatherShow, weather } = this.state
     return (
       <View className='member'>
         <View className='member__message'>
@@ -36,7 +45,9 @@ export default class Index extends Component<Props, State>{
           </View>
           <View className='member__weather-btn' onClick={this.onGetWeather}>获取天气</View>
         </View>
-        {/* <AtCalendar></AtCalendar> */}
+        {isWeatherShow && <View className='member__weather'>
+          <Weather weather={weather}></Weather>
+        </View>}
       </View>
     )
   }
