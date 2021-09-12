@@ -21,6 +21,7 @@ export default class Index extends Component<Props, State>{
     super(props)
     this.state = {
       isWeatherShow: false,
+      city: '北京',
       list: [
         {
           value: 'weather',
@@ -64,7 +65,7 @@ export default class Index extends Component<Props, State>{
     this.setState({ type: e.detail.value })
   }
   onInputCity = (e) => {
-    this.setState({ city: e.datail.value })
+    this.setState({ city: e.detail.value })
   }
   render() {
     const { isWeatherShow, weather } = this.state
@@ -81,7 +82,6 @@ export default class Index extends Component<Props, State>{
           <View className='member__weather-btn' onClick={this.onClickGetWeather}>获取天气</View>
         </View>
         <AtFloatLayout isOpened={isWeatherShow} title='天气' onClose={this.handleClose.bind(this)}>
-          {/* <Weather weather={weather}></Weather> */}
           <View className='member-props'>
             <Input className='member-props__input' onInput={this.onInputCity} placeholder='请输入城市名称'></Input>
             <RadioGroup onChange={this.onChangeModel} className='radio-group'>
@@ -93,6 +93,8 @@ export default class Index extends Component<Props, State>{
             </RadioGroup>
           </View>
           <AtButton className='member-props__btn' onClick={this.onGetWeather}>查询天气</AtButton>
+          {weather && <Weather weather={weather}></Weather>}
+          {/* <ForecastWeather weather={weather}></ForecastWeather> */}
         </AtFloatLayout>
       </View>
     )
