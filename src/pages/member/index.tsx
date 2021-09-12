@@ -1,11 +1,15 @@
 import { Component } from "react";
 import { View, Image, Input, Radio, RadioGroup } from "@tarojs/components";
-import { AtFloatLayout, AtButton } from "taro-ui";
+import { AtFloatLayout, AtButton, AtList, AtListItem, AtGrid } from "taro-ui";
+import { scanCode } from "@tarojs/taro";
 import Weather from "../../components/Weather";
 import ForecastWeather from "../../components/ForecastWeather";
 import getWeather, { getForecastsWeather } from "../../../src/api";
 import avatatImg from "../../resource/image/lixin.jpeg";
 import vipImg from "../../resource/image/vip.png";
+import weatherIcon from "./image/weather.png";
+import musicIcon from "./image/music.png";
+import codeIcon from "./image/code.png";
 import "./index.scss";
 
 interface Props {}
@@ -78,7 +82,32 @@ export default class Index extends Component<Props, State> {
   onInputCity = (e) => {
     this.setState({ city: e.detail.value });
   };
+  onCode=()=>{
+    scanCode({
+      success: (res) => {
+        console.log(res)
+      }
+    })
+  }
   render() {
+    const gridData = [
+      {
+        image: musicIcon,
+        value: "领取中心",
+      },
+      {
+        image: musicIcon,
+        value: "找折扣",
+      },
+      {
+        image: musicIcon,
+        value: "领会员",
+      },
+      {
+        image: musicIcon,
+        value: "去花钱",
+      },
+    ];
     const { isWeatherPopupShow, weather, isWeaterShow, isForecastWeatherShow } =
       this.state;
     return (
@@ -91,12 +120,12 @@ export default class Index extends Component<Props, State> {
             <View className="member__name">user太阳</View>
             <Image className="member__power" src={vipImg}></Image>
           </View>
-          <View
+          {/* <View
             className="member__weather-btn"
             onClick={this.onClickGetWeather}
           >
             获取天气
-          </View>
+          </View> */}
         </View>
         <AtFloatLayout
           isOpened={isWeatherPopupShow}
@@ -132,7 +161,22 @@ export default class Index extends Component<Props, State> {
             <ForecastWeather weather={weather}></ForecastWeather>
           )}
         </AtFloatLayout>
-      
+        <AtList>
+          <AtListItem title="打开音乐" isSwitch thumb={musicIcon} />
+          <AtListItem
+            onClick={this.onClickGetWeather}
+            title="获取天气信息"
+            thumb={weatherIcon}
+            arrow="right"
+          />
+          <AtListItem
+            title="扫一扫"
+            arrow="right"
+            thumb={codeIcon}
+            onClick={this.onCode}
+          />
+        </AtList>
+        <AtGrid hasBorder={false} data={gridData}></AtGrid>
       </View>
     );
   }
