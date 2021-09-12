@@ -42,7 +42,7 @@
     right: 20px;
     padding: 0 15px;
     border-radius: 50px;
-    color:white;
+    color: white;
     background-color: green;
   }
   &__weather {
@@ -53,4 +53,34 @@
     border-radius: 10px;
     box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1);
   }
+}
+.member-props {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  &__input {
+    height: 60px;
+    font-size: 30px;
+    padding-left: 20px;
+    border-radius: 60px;
+    box-sizing: border-box;
+    border: solid 1px black;
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    margin-top: 10px;
+    font-size: 30px;
+    padding: 0;
+    border-radius: 60px;
+    box-sizing: border-box;
+  }
+}
+.radio-group {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  justify-content: center;
 }

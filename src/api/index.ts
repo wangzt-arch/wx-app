@@ -12,7 +12,7 @@ export default function getWeather(cityCode = '河北省') {
 /**
  * 天气预报
  */
-export function getForecastsWeather(cityCode = '河北省') {
+export function getForecastsWeather(cityCode) {
     const params = {
         city: cityCode,
         key: "9c49ff55128adf0fc7480c2978dbcbce",

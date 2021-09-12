@@ -1,7 +1,8 @@
 import { Component } from 'react'
-import { View, Image } from '@tarojs/components'
+import { View, Image, Input, Button, Radio, RadioGroup, Label } from '@tarojs/components'
 import { AtFloatLayout, AtButton } from 'taro-ui'
 import Weather from '../../components/Weather'
+import ForecastWeather from '../../components/ForecastWeather'
 import getWeather, { getForecastsWeather } from '../../../src/api'
 import avatatImg from '../../resource/image/lixin.jpeg'
 import vipImg from '../../resource/image/vip.png'
@@ -11,30 +12,59 @@ interface Props { }
 interface State {
   isWeatherShow: boolean,
   weather?: {}
+  list: any
+  type?: string
+  city?: string
 }
 export default class Index extends Component<Props, State>{
   constructor(props) {
     super(props)
     this.state = {
       isWeatherShow: false,
+      list: [
+        {
+          value: 'weather',
+          text: '实时天气',
+          checked: true
+        },
+        {
+          value: 'forecast',
+          text: '天气预报',
+          checked: false
+        },
+      ]
     }
   }
-  async componentDidShow() {
-    try {
-      let res = await getWeather()
-      this.setState({ weather: res.data.lives[0] })
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  onGetWeather = async () => {
+  onClickGetWeather = async () => {
     this.setState({ isWeatherShow: true })
   }
-  onGetForecastsWeather = () => {
-    getForecastsWeather()
+  onGetWeather = async () => {
+    const { type, city } = this.state
+    if (type === 'forecast') {
+      try {
+        let res = await getForecastsWeather(city)
+        this.setState({ weather: res.data.forecasts[0] })
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    else {
+      try {
+        let res = await getWeather(city)
+        this.setState({ weather: res.data.lives[0] })
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
   handleClose = () => {
     this.setState({ isWeatherShow: false })
+  }
+  onChangeModel = (e) => {
+    this.setState({ type: e.detail.value })
+  }
+  onInputCity = (e) => {
+    this.setState({ city: e.datail.value })
   }
   render() {
     const { isWeatherShow, weather } = this.state
@@ -48,11 +78,21 @@ export default class Index extends Component<Props, State>{
             <View className='member__name'>user太阳</View>
             <Image className='member__power' src={vipImg}></Image>
           </View>
-          <View className='member__weather-btn' onClick={this.onGetWeather}>获取天气</View>
+          <View className='member__weather-btn' onClick={this.onClickGetWeather}>获取天气</View>
         </View>
         <AtFloatLayout isOpened={isWeatherShow} title='天气' onClose={this.handleClose.bind(this)}>
-          <Weather weather={weather}></Weather>
-          <AtButton type='primary' onClick={this.onGetForecastsWeather}>天气预报</AtButton>
+          {/* <Weather weather={weather}></Weather> */}
+          <View className='member-props'>
+            <Input className='member-props__input' onInput={this.onInputCity} placeholder='请输入城市名称'></Input>
+            <RadioGroup onChange={this.onChangeModel} className='radio-group'>
+              {this.state.list.map((item, i) => {
+                return (
+                  <Radio key={i} className='radio-group__radio' value={item.value} checked={item.checked}>{item.text}</Radio>
+                )
+              })}
+            </RadioGroup>
+          </View>
+          <AtButton className='member-props__btn' onClick={this.onGetWeather}>查询天气</AtButton>
         </AtFloatLayout>
       </View>
     )
