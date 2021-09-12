@@ -128,6 +128,7 @@ export default class Index extends Component<Props, State> {
           </View> */}
         </View>
         <AtFloatLayout
+          scrollY
           isOpened={isWeatherPopupShow}
           title="天气"
           onClose={this.handleClose.bind(this)}
