@@ -1,8 +1,8 @@
 import { Component } from 'react'
 import { View, Image } from '@tarojs/components'
-import { AtFloatLayout, AtRate } from 'taro-ui'
+import { AtFloatLayout, AtButton } from 'taro-ui'
 import Weather from '../../components/Weather'
-import getWeather from '../../../src/api'
+import getWeather, { getForecastsWeather } from '../../../src/api'
 import avatatImg from '../../resource/image/lixin.jpeg'
 import vipImg from '../../resource/image/vip.png'
 import './index.scss'
@@ -21,9 +21,7 @@ export default class Index extends Component<Props, State>{
   }
   async componentDidShow() {
     try {
-      // let res = await getWeather(110000)
-      let res = await getWeather('北京市')
-
+      let res = await getWeather()
       this.setState({ weather: res.data.lives[0] })
     } catch (error) {
       console.log(error);
@@ -31,6 +29,9 @@ export default class Index extends Component<Props, State>{
   }
   onGetWeather = async () => {
     this.setState({ isWeatherShow: true })
+  }
+  onGetForecastsWeather = () => {
+    getForecastsWeather()
   }
   handleClose = () => {
     this.setState({ isWeatherShow: false })
@@ -51,6 +52,7 @@ export default class Index extends Component<Props, State>{
         </View>
         <AtFloatLayout isOpened={isWeatherShow} title='天气' onClose={this.handleClose.bind(this)}>
           <Weather weather={weather}></Weather>
+          <AtButton type='primary' onClick={this.onGetForecastsWeather}>天气预报</AtButton>
         </AtFloatLayout>
       </View>
     )
