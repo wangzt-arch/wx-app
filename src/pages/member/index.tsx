@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { View, Image, Input, Radio, RadioGroup } from "@tarojs/components";
 import { AtFloatLayout, AtButton, AtList, AtListItem, AtGrid } from "taro-ui";
-import { scanCode, showShareMenu } from "@tarojs/taro";
+import { scanCode } from "@tarojs/taro";
 import Weather from "../../components/Weather";
 import ForecastWeather from "../../components/ForecastWeather";
 import getWeather, { getForecastsWeather } from "../../../src/api";
@@ -23,6 +23,8 @@ interface State {
   city?: string;
 }
 export default class Index extends Component<Props, State> {
+  onShareAppMessage() {}
+  onShareTimeline() {}
   constructor(props) {
     super(props);
     this.state = {
@@ -44,11 +46,7 @@ export default class Index extends Component<Props, State> {
       ],
     };
   }
-  componentDidShow() {
-    showShareMenu({
-      withShareTicket: true
-    })
-  }
+  componentDidShow() {}
   onClickGetWeather = async () => {
     this.setState({ isWeatherPopupShow: true });
   };
@@ -87,13 +85,13 @@ export default class Index extends Component<Props, State> {
   onInputCity = (e) => {
     this.setState({ city: e.detail.value });
   };
-  onCode=()=>{
+  onCode = () => {
     scanCode({
       success: (res) => {
-        console.log(res)
-      }
-    })
-  }
+        console.log(res);
+      },
+    });
+  };
   render() {
     const gridData = [
       {
@@ -113,8 +111,12 @@ export default class Index extends Component<Props, State> {
         value: "去花钱",
       },
     ];
-    const { isWeatherPopupShow, weather, isWeatherShow, isForecastWeatherShow } =
-      this.state;
+    const {
+      isWeatherPopupShow,
+      weather,
+      isWeatherShow,
+      isForecastWeatherShow,
+    } = this.state;
     return (
       <View className="member">
         <View className="member__message">

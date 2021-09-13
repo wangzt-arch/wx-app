@@ -3,17 +3,8 @@ import { View, Text } from '@tarojs/components'
 import './index.scss'
 
 export default class Index extends Component {
-
-  componentWillMount () { }
-
-  componentDidMount () { }
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
-
+  onShareAppMessage() {}
+  onShareTimeline() {}
   render () {
     return (
       <View className='index'>
