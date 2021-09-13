@@ -5,7 +5,7 @@ import { scanCode, showShareMenu } from "@tarojs/taro";
 import Weather from "../../components/Weather";
 import ForecastWeather from "../../components/ForecastWeather";
 import getWeather, { getForecastsWeather } from "../../../src/api";
-import avatatImg from "../../resource/image/lixin.jpeg";
+import avatarImg from "../../resource/image/lixin.jpeg";
 import vipImg from "../../resource/image/vip.png";
 import weatherIcon from "./image/weather.png";
 import musicIcon from "./image/music.png";
@@ -119,7 +119,7 @@ export default class Index extends Component<Props, State> {
       <View className="member">
         <View className="member__message">
           <View className="member__avatar">
-            <Image className="member__image" src={avatatImg}></Image>
+            <Image className="member__image" src={avatarImg}></Image>
           </View>
           <View className="member__user">
             <View className="member__name">user太阳</View>
