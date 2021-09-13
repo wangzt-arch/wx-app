@@ -11,8 +11,8 @@ export default class Index extends Component {
   onShareTimeline() {}
   render() {
     return (
-      <View className="home">
-        <Text>Home</Text>
+      <View className="category">
+        <Text>分类</Text>
       </View>
     );
   }

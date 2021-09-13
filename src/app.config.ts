@@ -1,7 +1,8 @@
 export default {
   pages: [
     'pages/home/index',
-    'pages/member/index'
+    'pages/member/index',
+    'pages/category/index'
   ],
   subPackages: [
     {
@@ -31,6 +32,12 @@ export default {
         text: '首页',
         iconPath: 'resource/image/home.png',
         selectedIconPath: 'resource/image/home-select.png'
+      },
+      {
+        pagePath: 'pages/category/index',
+        text: '分类',
+        iconPath: 'resource/image/category.png',
+        selectedIconPath: 'resource/image/category-select.png'
       },
       {
         pagePath: 'pages/member/index',
