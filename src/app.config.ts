@@ -6,7 +6,7 @@ export default {
   ],
   subPackages: [
     {
-      root: 'subpackages/login',
+      root: 'subpackages/detail',
       pages: ['index']
     }],
   permission: {
