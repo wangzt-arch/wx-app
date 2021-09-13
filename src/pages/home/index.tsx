@@ -56,12 +56,12 @@ export default class Index extends Component<Props, State> {
         </View>
         <AtModal
           isOpened={isAtModalShow}
-          title="标题x x x"
+          title="联系商家"
           cancelText="取消"
           confirmText="确认"
           onCancel={this.onAtModalClose}
           onConfirm={this.onCallMe}
-          content="详情请咨询商家，是否电话咨询.联系电话：18732848099"
+          content="详情请咨询商家，是否电话咨询。联系电话：18732848099"
         />
       </View>
     );
