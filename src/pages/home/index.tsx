@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { View, Text, Swiper, SwiperItem } from "@tarojs/components";
 import "./index.scss";
-import { AtModal, AtNoticebar } from "taro-ui";
+import { AtGrid, AtModal, AtNoticebar } from "taro-ui";
 import { makePhoneCall } from "@tarojs/taro";
 
 interface Props {}
@@ -41,7 +41,7 @@ export default class Index extends Component<Props, State> {
         >
           大酬宾 大酬宾！
         </AtNoticebar>
-        <View className="='home__swiper">
+        <View className="home__swiper">
           <Swiper circular autoplay>
             <SwiperItem>
               <View className="swiper__item">广告一</View>
@@ -53,6 +53,20 @@ export default class Index extends Component<Props, State> {
               <View className="swiper__item">广告三</View>
             </SwiperItem>
           </Swiper>
+        </View>
+        <View className="home__product">
+          <View className="product__title">商品总览</View>
+          <AtGrid
+            className="product__item"
+            data={[
+              { value: "种子" },
+              { value: "种子" },
+              { value: "种子" },
+              { value: "种子" },
+              { value: "种子" },
+              { value: "种子" },
+            ]}
+          />
         </View>
         <AtModal
           isOpened={isAtModalShow}

@@ -1,5 +1,23 @@
-.swiper__item{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.swiper__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product__title {
+  height: 48px;
+  font-size: 36px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #000000;
+  line-height: 48px;
+  margin-bottom: 32px;
+}
+.product__item {
+  border: 1px solid rgb(239, 245, 249);
+}
+.home__product {
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+  box-sizing: border-box;
 }
