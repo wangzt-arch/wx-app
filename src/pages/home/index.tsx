@@ -2,6 +2,7 @@ import { Component } from "react";
 import { View, Text, Swiper, SwiperItem } from "@tarojs/components";
 import "./index.scss";
 import { AtModal, AtNoticebar } from "taro-ui";
+import { makePhoneCall } from "@tarojs/taro";
 
 interface Props {}
 interface State {
@@ -21,6 +22,11 @@ export default class Index extends Component<Props, State> {
   };
   onAtModalClose = () => {
     this.setState({ isAtModalShow: false });
+  };
+  onCallMe = () => {
+    makePhoneCall({
+      phoneNumber: "18732848099",
+    });
   };
   render() {
     const { isAtModalShow } = this.state;
@@ -54,7 +60,8 @@ export default class Index extends Component<Props, State> {
           cancelText="取消"
           confirmText="确认"
           onCancel={this.onAtModalClose}
-          content="解释权商家所有，请拨打电话咨询"
+          onConfirm={this.onCallMe}
+          content="详情请咨询商家，是否电话咨询.联系电话：18732848099"
         />
       </View>
     );
