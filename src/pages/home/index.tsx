@@ -23,6 +23,7 @@ export default class Index extends Component<Props, State> {
     this.setState({ isAtModalShow: false });
   };
   render() {
+    const { isAtModalShow } = this.state;
     return (
       <View className="home">
         <AtNoticebar
@@ -48,12 +49,12 @@ export default class Index extends Component<Props, State> {
           </Swiper>
         </View>
         <AtModal
-          isOpened={this.state.isAtModalShow}
-          title="标题"
+          isOpened={isAtModalShow}
+          title="标题x x x"
           cancelText="取消"
           confirmText="确认"
           onCancel={this.onAtModalClose}
-          content="欢迎加入京东凹凸实验室\n\r欢迎加入京东凹凸实验室"
+          content="解释权商家所有，请拨打电话咨询"
         />
       </View>
     );
