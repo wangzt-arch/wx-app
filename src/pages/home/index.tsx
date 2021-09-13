@@ -38,13 +38,13 @@ export default class Index extends Component<Props, State> {
         <View className="='home__swiper">
           <Swiper circular autoplay>
             <SwiperItem>
-              <View className="demo-text-1">1</View>
+              <View className="swiper__item">广告一</View>
             </SwiperItem>
             <SwiperItem>
-              <View className="demo-text-2">2</View>
+              <View className="swiper__item">广告二</View>
             </SwiperItem>
             <SwiperItem>
-              <View className="demo-text-3">3</View>
+              <View className="swiper__item">广告三</View>
             </SwiperItem>
           </Swiper>
         </View>
