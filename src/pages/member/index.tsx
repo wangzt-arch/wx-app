@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { View, Image, Input, Radio, RadioGroup } from "@tarojs/components";
 import { AtFloatLayout, AtButton, AtList, AtListItem, AtGrid } from "taro-ui";
-import { scanCode } from "@tarojs/taro";
+import { scanCode, showShareMenu } from "@tarojs/taro";
 import Weather from "../../components/Weather";
 import ForecastWeather from "../../components/ForecastWeather";
 import getWeather, { getForecastsWeather } from "../../../src/api";
@@ -15,7 +15,7 @@ import "./index.scss";
 interface Props {}
 interface State {
   isWeatherPopupShow: boolean;
-  isWeaterShow?: boolean;
+  isWeatherShow?: boolean;
   isForecastWeatherShow?: boolean;
   weather?: {};
   list: any;
@@ -28,7 +28,7 @@ export default class Index extends Component<Props, State> {
     this.state = {
       isWeatherPopupShow: false,
       isForecastWeatherShow: false,
-      isWeaterShow: false,
+      isWeatherShow: false,
       city: "北京",
       list: [
         {
@@ -44,6 +44,11 @@ export default class Index extends Component<Props, State> {
       ],
     };
   }
+  componentDidShow() {
+    showShareMenu({
+      withShareTicket: true
+    })
+  }
   onClickGetWeather = async () => {
     this.setState({ isWeatherPopupShow: true });
   };
@@ -55,7 +60,7 @@ export default class Index extends Component<Props, State> {
         this.setState({
           weather: res.data.forecasts[0],
           isForecastWeatherShow: true,
-          isWeaterShow: false,
+          isWeatherShow: false,
         });
       } catch (error) {
         console.log(error);
@@ -66,7 +71,7 @@ export default class Index extends Component<Props, State> {
         this.setState({
           weather: res.data.lives[0],
           isForecastWeatherShow: false,
-          isWeaterShow: true,
+          isWeatherShow: true,
         });
       } catch (error) {
         console.log(error);
@@ -108,7 +113,7 @@ export default class Index extends Component<Props, State> {
         value: "去花钱",
       },
     ];
-    const { isWeatherPopupShow, weather, isWeaterShow, isForecastWeatherShow } =
+    const { isWeatherPopupShow, weather, isWeatherShow, isForecastWeatherShow } =
       this.state;
     return (
       <View className="member">
@@ -157,7 +162,7 @@ export default class Index extends Component<Props, State> {
           <AtButton className="member-props__btn" onClick={this.onGetWeather}>
             查询天气
           </AtButton>
-          {weather && isWeaterShow && <Weather weather={weather}></Weather>}
+          {weather && isWeatherShow && <Weather weather={weather}></Weather>}
           {weather && isForecastWeatherShow && (
             <ForecastWeather weather={weather}></ForecastWeather>
           )}
