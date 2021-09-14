@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { View, Text, Image } from "@tarojs/components";
 import "./index.scss";
+import ProductCard from "../../../src/components/ProductCard";
 
 export default class Index extends Component {
   componentWillMount() {}
@@ -16,8 +17,8 @@ export default class Index extends Component {
   render() {
     return (
       <View className="index">
-        <Text>detail</Text>
-        <Image src="https://wztwx.oss-accelerate.aliyuncs.com/product/bocai.png"></Image>
+        {/* <Image src="https://wztwx.oss-accelerate.aliyuncs.com/product/bocai.png"></Image> */}
+        <ProductCard></ProductCard>
       </View>
     );
   }
