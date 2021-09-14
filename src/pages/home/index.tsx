@@ -1,12 +1,21 @@
 import { Component } from "react";
-import { View, Text, Swiper, SwiperItem } from "@tarojs/components";
+import {
+  View,
+  Text,
+  Swiper,
+  SwiperItem,
+  Image,
+  Button,
+} from "@tarojs/components";
 import "./index.scss";
-import { AtGrid, AtModal, AtNoticebar } from "taro-ui";
+import { AtButton, AtFloatLayout, AtGrid, AtModal, AtNoticebar } from "taro-ui";
 import { makePhoneCall } from "@tarojs/taro";
 
 interface Props {}
 interface State {
   isAtModalShow: boolean;
+  isFloatLayoutOpened: boolean;
+  mobile: string;
 }
 export default class Index extends Component<Props, State> {
   onShareAppMessage() {}
@@ -15,6 +24,8 @@ export default class Index extends Component<Props, State> {
     super(props);
     this.state = {
       isAtModalShow: false,
+      isFloatLayoutOpened: false,
+      mobile: "18732851373",
     };
   }
   onGoToMore = () => {
@@ -23,13 +34,19 @@ export default class Index extends Component<Props, State> {
   onAtModalClose = () => {
     this.setState({ isAtModalShow: false });
   };
-  onCallMe = () => {
+  onFloatLayoutOpened = () => {
+    this.setState({ isFloatLayoutOpened: true });
+  };
+  onFloatLayoutClose = () => {
+    this.setState({ isFloatLayoutOpened: false });
+  };
+  onCallMe = (mobile: string) => {
     makePhoneCall({
-      phoneNumber: "18732848099",
+      phoneNumber: mobile,
     });
   };
   render() {
-    const { isAtModalShow } = this.state;
+    const { isAtModalShow, isFloatLayoutOpened, mobile } = this.state;
     return (
       <View className="home">
         <AtNoticebar
@@ -68,15 +85,29 @@ export default class Index extends Component<Props, State> {
             ]}
           />
         </View>
+        <View className="home__button">
+          <AtButton type="primary" onClick={this.onFloatLayoutOpened}>
+            查看联系方式
+          </AtButton>
+        </View>
         <AtModal
           isOpened={isAtModalShow}
           title="联系商家"
           cancelText="取消"
           confirmText="确认"
           onCancel={this.onAtModalClose}
-          onConfirm={this.onCallMe}
-          content="详情请咨询商家，是否电话咨询。联系电话：18732848099"
+          onConfirm={this.onCallMe.bind(this, mobile)}
+          content={`详情请咨询商家，是否电话咨询。联系电话：${mobile}`}
         />
+        <AtFloatLayout
+          isOpened={isFloatLayoutOpened}
+          title="联系方式"
+          onClose={this.onFloatLayoutClose}
+        >
+          <Text>联系电话:{mobile}</Text>
+          <Image src=" "></Image>
+          <Button onClick={this.onCallMe.bind(this, mobile)}>拨打电话</Button>
+        </AtFloatLayout>
       </View>
     );
   }

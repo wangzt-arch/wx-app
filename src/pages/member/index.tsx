@@ -5,7 +5,7 @@ import { scanCode } from "@tarojs/taro";
 import Weather from "../../components/Weather";
 import ForecastWeather from "../../components/ForecastWeather";
 import getWeather, { getForecastsWeather } from "../../../src/api";
-import avatarImg from "../../resource/image/lixin.jpeg";
+import avatarImg from "../../resource/image/avatar.png";
 import vipImg from "../../resource/image/vip.png";
 import weatherIcon from "./image/weather.png";
 import musicIcon from "./image/music.png";
