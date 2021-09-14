@@ -9,7 +9,7 @@ import {
 } from "@tarojs/components";
 import "./index.scss";
 import { AtButton, AtFloatLayout, AtGrid, AtModal, AtNoticebar } from "taro-ui";
-import { makePhoneCall } from "@tarojs/taro";
+import { makePhoneCall, navigateTo } from "@tarojs/taro";
 
 interface Props {}
 interface State {
@@ -45,6 +45,11 @@ export default class Index extends Component<Props, State> {
       phoneNumber: mobile,
     });
   };
+  onNavigateToDetail=()=>{
+    navigateTo({
+      url:'/subpackages/detail/index'
+    })
+  }
   render() {
     const { isAtModalShow, isFloatLayoutOpened, mobile } = this.state;
     return (
@@ -72,7 +77,7 @@ export default class Index extends Component<Props, State> {
           </Swiper>
         </View>
         <View className="home__product">
-          <View className="product__title">商品总览</View>
+          <View className="product__title" onClick={this.onNavigateToDetail}>商品总览</View>
           <AtGrid
             className="product__item"
             data={[
