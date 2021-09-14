@@ -17,7 +17,7 @@ export default class Index extends Component {
     return (
       <View className="index">
         <Text>detail</Text>
-        <Image src="https://wztwx.oss-accelerate.aliyuncs.com/image/bocai.png"></Image>
+        <Image src="https://wztwx.oss-accelerate.aliyuncs.com/product/bocai.png"></Image>
       </View>
     );
   }

@@ -1,12 +1,5 @@
 import { Component } from "react";
-import {
-  View,
-  Text,
-  Swiper,
-  SwiperItem,
-  Image,
-  Button,
-} from "@tarojs/components";
+import { View, Text, Swiper, SwiperItem, Image } from "@tarojs/components";
 import "./index.scss";
 import { AtButton, AtFloatLayout, AtGrid, AtModal, AtNoticebar } from "taro-ui";
 import { makePhoneCall, navigateTo } from "@tarojs/taro";
@@ -45,11 +38,11 @@ export default class Index extends Component<Props, State> {
       phoneNumber: mobile,
     });
   };
-  onNavigateToDetail=()=>{
+  onNavigateToDetail = () => {
     navigateTo({
-      url:'/subpackages/detail/index'
-    })
-  }
+      url: "/subpackages/detail/index",
+    });
+  };
   render() {
     const { isAtModalShow, isFloatLayoutOpened, mobile } = this.state;
     return (
@@ -77,7 +70,9 @@ export default class Index extends Component<Props, State> {
           </Swiper>
         </View>
         <View className="home__product">
-          <View className="product__title" onClick={this.onNavigateToDetail}>商品总览</View>
+          <View className="product__title" onClick={this.onNavigateToDetail}>
+            商品总览
+          </View>
           <AtGrid
             className="product__item"
             data={[
@@ -109,9 +104,19 @@ export default class Index extends Component<Props, State> {
           title="联系方式"
           onClose={this.onFloatLayoutClose}
         >
-          <Text>联系电话:{mobile}</Text>
-          <Image src=" "></Image>
-          <Button onClick={this.onCallMe.bind(this, mobile)}>拨打电话</Button>
+          <View className="float__area">
+            <View className="float__mobile">
+              <Text>联系电话:{mobile}</Text>
+              <View onClick={this.onCallMe.bind(this, mobile)}>拨打电话</View>
+            </View>
+            <View className="float__code">
+              <Image
+                className="code__size"
+                src="https://wztwx.oss-accelerate.aliyuncs.com/home/wxcode.jpg"
+              ></Image>
+            </View>
+            <View>长按二维码添加好友</View>
+          </View>
         </AtFloatLayout>
       </View>
     );

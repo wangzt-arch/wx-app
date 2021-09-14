@@ -31,3 +31,25 @@
   padding: 32px;
   box-sizing: border-box;
 }
+.float__area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.float__mobile {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.float__code {
+  width: 400px;
+  height: 400px;
+  margin-bottom: 10px;
+  .code__size {
+    width: 100%;
+    height: 100%;
+  }
+}
