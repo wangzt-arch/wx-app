@@ -68,13 +68,19 @@ export default class Index extends Component<Props, State> {
         <View className="home__swiper">
           <Swiper circular autoplay>
             <SwiperItem>
-              <View className="swiper__item">广告一</View>
+              <View className="swiper__item">
+                <Image src="https://wztwx.oss-accelerate.aliyuncs.com/home/banner4.webp"></Image>
+              </View>
             </SwiperItem>
             <SwiperItem>
-              <View className="swiper__item">广告二</View>
+              <View className="swiper__item">
+                <Image src="https://wztwx.oss-accelerate.aliyuncs.com/home/banner2.webp"></Image>
+              </View>
             </SwiperItem>
             <SwiperItem>
-              <View className="swiper__item">广告三</View>
+              <View className="swiper__item">
+                <Image src="https://wztwx.oss-accelerate.aliyuncs.com/home/banner3.webp"></Image>
+              </View>
             </SwiperItem>
           </Swiper>
         </View>
