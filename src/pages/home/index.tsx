@@ -3,6 +3,8 @@ import { View, Text, Swiper, SwiperItem, Image } from "@tarojs/components";
 import "./index.scss";
 import { AtButton, AtFloatLayout, AtGrid, AtModal, AtNoticebar } from "taro-ui";
 import { makePhoneCall, navigateTo, previewImage } from "@tarojs/taro";
+import ProductCard from "../../components/ProductCard";
+import Title from "../../components/Title";
 
 interface Props {}
 interface State {
@@ -84,21 +86,51 @@ export default class Index extends Component<Props, State> {
             </SwiperItem>
           </Swiper>
         </View>
-        <View className="home__product">
-          <View className="product__title" onClick={this.onNavigateToDetail}>
-            商品总览
-          </View>
+        <Title title="商品分类" onClick={this.onNavigateToDetail} />
+        <View className="home__product--all">
           <AtGrid
             className="product__item"
             data={[
-              { value: "种子" },
-              { value: "种子" },
-              { value: "种子" },
-              { value: "种子" },
-              { value: "种子" },
-              { value: "种子" },
+              {
+                value: "茴香",
+                image:
+                  "https://wztwx.oss-accelerate.aliyuncs.com/icon/huixiangmiao.png",
+              },
+              {
+                value: "香菜",
+                image:
+                  "https://wztwx.oss-accelerate.aliyuncs.com/icon/xiangcai.png",
+              },
+              {
+                value: "大葱",
+                image:
+                  "https://wztwx.oss-accelerate.aliyuncs.com/icon/cong.png",
+              },
+              {
+                value: "菠菜",
+                image:
+                  "https://wztwx.oss-accelerate.aliyuncs.com/icon/bocai.png",
+              },
+              {
+                value: "种子",
+                image:
+                  "https://wztwx.oss-accelerate.aliyuncs.com/icon/huixiangmiao.png",
+              },
+              {
+                value: "种子",
+                image:
+                  "https://wztwx.oss-accelerate.aliyuncs.com/icon/huixiangmiao.png",
+              },
             ]}
           />
+        </View>
+        <Title title="商品总览" />
+        <View className="home__product">
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
+          <ProductCard />
         </View>
         <View className="home__button">
           <AtButton type="primary" onClick={this.onFloatLayoutOpened}>

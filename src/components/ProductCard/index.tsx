@@ -13,7 +13,7 @@ export default class ProductCard extends Component<Props> {
     const {
       imageUrl = "https://wztwx.oss-accelerate.aliyuncs.com/product/vegetables.webp",
       title = "标题",
-      describe='出苗快长势好',
+      describe = "出苗快长势好",
       price = "1000",
     } = this.props;
     return (
