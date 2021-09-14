@@ -16,9 +16,15 @@ export default class Index extends Component {
 
   render() {
     return (
-      <View className="index">
+      <View className="detail">
         {/* <Image src="https://wztwx.oss-accelerate.aliyuncs.com/product/bocai.png"></Image> */}
-        <ProductCard></ProductCard>
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
       </View>
     );
   }
