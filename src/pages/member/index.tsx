@@ -5,7 +5,6 @@ import { scanCode } from "@tarojs/taro";
 import Weather from "../../components/Weather";
 import ForecastWeather from "../../components/ForecastWeather";
 import getWeather, { getForecastsWeather } from "../../../src/api";
-import avatarImg from "../../resource/image/avatar.png";
 import vipImg from "../../resource/image/vip.png";
 import weatherIcon from "./image/weather.png";
 import musicIcon from "./image/music.png";
@@ -121,7 +120,10 @@ export default class Index extends Component<Props, State> {
       <View className="member">
         <View className="member__message">
           <View className="member__avatar">
-            <Image className="member__image" src={avatarImg}></Image>
+            <Image
+              className="member__image"
+              src="https://wztwx.oss-accelerate.aliyuncs.com/member/avatar.png"
+            ></Image>
           </View>
           <View className="member__user">
             <View className="member__name">user太阳</View>
