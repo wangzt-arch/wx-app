@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { View, Text, Swiper, SwiperItem, Image } from "@tarojs/components";
 import "./index.scss";
-import { AtButton, AtFloatLayout, AtGrid, AtModal, AtNoticebar } from "taro-ui";
+import { AtFloatLayout, AtGrid, AtNoticebar } from "taro-ui";
 import { makePhoneCall, navigateTo, previewImage } from "@tarojs/taro";
 import ProductCard from "../../components/ProductCard";
 import Title from "../../components/Title";
@@ -23,12 +23,6 @@ export default class Index extends Component<Props, State> {
       mobile: "18732851373",
     };
   }
-  onGoToMore = () => {
-    this.setState({ isAtModalShow: true });
-  };
-  onAtModalClose = () => {
-    this.setState({ isAtModalShow: false });
-  };
   onFloatLayoutOpened = () => {
     this.setState({ isFloatLayoutOpened: true });
   };
@@ -55,7 +49,36 @@ export default class Index extends Component<Props, State> {
     });
   };
   render() {
-    const { isAtModalShow, isFloatLayoutOpened, mobile } = this.state;
+    const { isFloatLayoutOpened, mobile } = this.state;
+    const arGridData = [
+      {
+        value: "茴香",
+        image:
+          "https://wztwx.oss-accelerate.aliyuncs.com/icon/huixiangmiao.png",
+      },
+      {
+        value: "香菜",
+        image: "https://wztwx.oss-accelerate.aliyuncs.com/icon/xiangcai.png",
+      },
+      {
+        value: "大葱",
+        image: "https://wztwx.oss-accelerate.aliyuncs.com/icon/cong.png",
+      },
+      {
+        value: "菠菜",
+        image: "https://wztwx.oss-accelerate.aliyuncs.com/icon/bocai.png",
+      },
+      {
+        value: "种子",
+        image:
+          "https://wztwx.oss-accelerate.aliyuncs.com/icon/huixiangmiao.png",
+      },
+      {
+        value: "种子",
+        image:
+          "https://wztwx.oss-accelerate.aliyuncs.com/icon/huixiangmiao.png",
+      },
+    ];
     return (
       <View className="home">
         <AtNoticebar
@@ -63,7 +86,7 @@ export default class Index extends Component<Props, State> {
           single
           showMore
           moreText="了解更多"
-          onGotoMore={this.onGoToMore.bind(this)}
+          onGotoMore={this.onFloatLayoutOpened.bind(this)}
         >
           大酬宾 大酬宾！
         </AtNoticebar>
@@ -88,41 +111,7 @@ export default class Index extends Component<Props, State> {
         </View>
         <Title title="商品分类" onClick={this.onNavigateToDetail} />
         <View className="home__product--all">
-          <AtGrid
-            className="product__item"
-            data={[
-              {
-                value: "茴香",
-                image:
-                  "https://wztwx.oss-accelerate.aliyuncs.com/icon/huixiangmiao.png",
-              },
-              {
-                value: "香菜",
-                image:
-                  "https://wztwx.oss-accelerate.aliyuncs.com/icon/xiangcai.png",
-              },
-              {
-                value: "大葱",
-                image:
-                  "https://wztwx.oss-accelerate.aliyuncs.com/icon/cong.png",
-              },
-              {
-                value: "菠菜",
-                image:
-                  "https://wztwx.oss-accelerate.aliyuncs.com/icon/bocai.png",
-              },
-              {
-                value: "种子",
-                image:
-                  "https://wztwx.oss-accelerate.aliyuncs.com/icon/huixiangmiao.png",
-              },
-              {
-                value: "种子",
-                image:
-                  "https://wztwx.oss-accelerate.aliyuncs.com/icon/huixiangmiao.png",
-              },
-            ]}
-          />
+          <AtGrid className="product__item" data={arGridData} />
         </View>
         <Title title="商品总览" />
         <View className="home__product">
@@ -132,20 +121,6 @@ export default class Index extends Component<Props, State> {
           <ProductCard />
           <ProductCard />
         </View>
-        <View className="home__button">
-          <AtButton type="primary" onClick={this.onFloatLayoutOpened}>
-            查看联系方式
-          </AtButton>
-        </View>
-        <AtModal
-          isOpened={isAtModalShow}
-          title="联系商家"
-          cancelText="取消"
-          confirmText="确认"
-          onCancel={this.onAtModalClose}
-          onConfirm={this.onCallMe.bind(this, mobile)}
-          content={`详情请咨询商家，是否电话咨询。联系电话：${mobile}`}
-        />
         <AtFloatLayout
           isOpened={isFloatLayoutOpened}
           title="联系方式"
