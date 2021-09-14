@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { View, Text } from "@tarojs/components";
+import { View, Image } from "@tarojs/components";
 import "./index.scss";
 import { AtTabs, AtTabsPane } from "taro-ui";
 
@@ -23,6 +23,15 @@ export default class Index extends Component<Props, State> {
     });
   }
   render() {
+    const atTabArr = [
+      "https://wztwx.oss-accelerate.aliyuncs.com/category/cate1.png",
+      "https://wztwx.oss-accelerate.aliyuncs.com/category/cate2.png",
+      "https://wztwx.oss-accelerate.aliyuncs.com/category/cate3.png",
+      "https://wztwx.oss-accelerate.aliyuncs.com/category/cate4.png",
+      "https://wztwx.oss-accelerate.aliyuncs.com/category/cate5.png",
+      "https://wztwx.oss-accelerate.aliyuncs.com/category/cate6.png",
+      "https://wztwx.oss-accelerate.aliyuncs.com/category/cate7.png",
+    ];
     return (
       <View className="category">
         <AtTabs
@@ -40,60 +49,17 @@ export default class Index extends Component<Props, State> {
           ]}
           onClick={this.handleClick.bind(this)}
         >
-          <AtTabsPane
-            tabDirection="vertical"
-            current={this.state.current}
-            index={0}
-          >
-            <View style="font-size:18px;text-align:center;height:200px;">
-              标签页一的内容
-            </View>
-          </AtTabsPane>
-          <AtTabsPane
-            tabDirection="vertical"
-            current={this.state.current}
-            index={1}
-          >
-            <View style="font-size:18px;text-align:center;height:200px;">
-              标签页二的内容
-            </View>
-          </AtTabsPane>
-          <AtTabsPane
-            tabDirection="vertical"
-            current={this.state.current}
-            index={2}
-          >
-            <View style="font-size:18px;text-align:center;height:200px;">
-              标签页三的内容
-            </View>
-          </AtTabsPane>
-          <AtTabsPane
-            tabDirection="vertical"
-            current={this.state.current}
-            index={3}
-          >
-            <View style="font-size:18px;text-align:center;height:200px;">
-              标签页四的内容
-            </View>
-          </AtTabsPane>
-          <AtTabsPane
-            tabDirection="vertical"
-            current={this.state.current}
-            index={4}
-          >
-            <View style="font-size:18px;text-align:center;height:200px;">
-              标签页五的内容
-            </View>
-          </AtTabsPane>
-          <AtTabsPane
-            tabDirection="vertical"
-            current={this.state.current}
-            index={5}
-          >
-            <View style="font-size:18px;text-align:center;height:200px;">
-              标签页六的内容
-            </View>
-          </AtTabsPane>
+          {atTabArr.map((item, index) => (
+            <AtTabsPane
+              tabDirection="vertical"
+              current={this.state.current}
+              index={index}
+            >
+              <View style="font-size:18px;text-align:center;height:200px;">
+                <Image src={item}></Image>
+              </View>
+            </AtTabsPane>
+          ))}
         </AtTabs>
       </View>
     );
