@@ -2,7 +2,7 @@ import { Component } from "react";
 import { View, Text, Swiper, SwiperItem, Image } from "@tarojs/components";
 import "./index.scss";
 import { AtButton, AtFloatLayout, AtGrid, AtModal, AtNoticebar } from "taro-ui";
-import { makePhoneCall, navigateTo } from "@tarojs/taro";
+import { makePhoneCall, navigateTo, previewImage } from "@tarojs/taro";
 
 interface Props {}
 interface State {
@@ -41,6 +41,15 @@ export default class Index extends Component<Props, State> {
   onNavigateToDetail = () => {
     navigateTo({
       url: "/subpackages/detail/index",
+    });
+  };
+  onClickCode = (e) => {
+    let current = e.target.dataset.src;
+    console.log("sssssssssss", current);
+
+    previewImage({
+      current: current,
+      urls: [current],
     });
   };
   render() {
@@ -111,11 +120,13 @@ export default class Index extends Component<Props, State> {
             </View>
             <View className="float__code">
               <Image
+                onClick={this.onClickCode}
                 className="code__size"
                 src="https://wztwx.oss-accelerate.aliyuncs.com/home/wxcode.jpg"
+                data-src="https://wztwx.oss-accelerate.aliyuncs.com/home/wxcode.jpg"
               ></Image>
             </View>
-            <View>长按二维码添加好友</View>
+            <View>点击二维码后长按即可添加好友</View>
           </View>
         </AtFloatLayout>
       </View>
