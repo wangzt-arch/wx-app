@@ -1,0 +1,9 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "wztwxapp",
+  "appid": "wxeac81e41c0db1cae",
+  "setting": {
+    "es6": false,
+    "minified": false
+  }
+}
